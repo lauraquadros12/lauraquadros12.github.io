@@ -5,117 +5,133 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <style id="style">
+
+    <style type="text/scss" id="style" lang="sass">
+    @import url('https://unpkg.com/bootstrap@5.1.3/dist/css/bootstrap.min.css');
     @import url('https://cdn.jsdelivr.net/npm/@mdi/font@6.6.96/css/materialdesignicons.min.css');
     @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo+Black&family=Bungee&family=Cabin:wght@500&family=Fjalla+One&family=Fugaz+One&family=Kanit:wght@500&family=Merriweather+Sans:wght@500&family=Odibee+Sans&family=Ubuntu+Condensed&display=swap');
+
+    $font-primary: Cabin;
+
+    $font-families: (
+        "abril-fatface": Abril Fatface,
+        "archivo-black": Archivo Black,
+        "bungee": Bungee,
+        "cabin": Cabin,
+        "fjalla-one": Fjalla One,
+        "fugaz-one": Fugaz One,
+        "kanit": Kanit,
+        "merriweather-sans": Merriweather Sans,
+        "odibee-sans": Odibee Sans,
+        "ubuntu-condensed": Ubuntu Condensed,
+        "primary": $font-primary,
+    );
+    
+
+    $font-sizes: (
+        "xs": 18px,
+        "sm": 24px,
+        "md": 40px,
+        "lg": 50px,
+        "xl": 60px,
+        "xxl": 100px
+    );
+    
+    $colors: (
+        "girl": #8b1345,
+        "girl-light": #b42360
+    );
+
+    html, body {font-family: $font-primary; color: #eee;}
+    body {background:#0a0a0a; display: block !important;}
+
+    @each $font-family-name, $font-family in $font-families {
+        .font-#{$font-family-name} {
+            font-family: '#{$font-family}';
+        }
+
+        @each $font-size-name, $font-size in $font-sizes {
+            .font-#{$font-family-name}-#{$font-size-name} {
+                font-family: '#{$font-family}';
+                font-size: $font-size;
+                line-height: calc(#{$font-size} + 5px);
+            }
+            
+            .font-#{$font-size-name} {
+                font-size: $font-size;
+                line-height: calc(#{$font-size} + 5px);
+            }
+        }
+    }
+
+    @each $color-name, $color in $colors {
+        .text-#{$color-name} {
+            color: $color;
+        }
+
+        .bg-#{$color-name} {
+            background: $color;
+        }
+        
+        .border-#{$color-name} {
+            border-color: $color !important;
+        }
+        
+        .shadow-#{$color-name} {
+            box-shadow: 0 0 60px 60px $color;
+        }
+        
+        .glow-#{$color-name} {
+            box-shadow: 0 0 10px 5px $color;
+
+            &:hover {
+                box-shadow: 0 0 30px 15px $color;
+            }
+        }
+    }
+
+    .btn-big {
+        color: #dddddd;
+        padding: 30px 50px;
+        border-radius: 80px;
+        font-size: 35px;
+        font-family: $font-primary;
+        line-height: 1.2;
+        border: none;
+        
+        &:hover {
+            background: #af1656;
+            color: #ffffff;
+        }
+    }
+
+    .gboss-alunas-images {
+        img {
+            width: auto;
+            height: 500px;
+            margin: 10px;
+        }
+    }
     </style>
 
-    <script src="https://cdn.rawgit.com/medialize/sass.js/master/dist/sass.sync.js"></script>
+    <script src="https://cdn.rawgit.com/medialize/sass.js/master/dist/sass.js"></script>
     <script>
-    const style = `
-        $font-primary: Cabin;
-
-        $font-families: (
-            "abril-fatface": Abril Fatface,
-            "archivo-black": Archivo Black,
-            "bungee": Bungee,
-            "cabin": Cabin,
-            "fjalla-one": Fjalla One,
-            "fugaz-one": Fugaz One,
-            "kanit": Kanit,
-            "merriweather-sans": Merriweather Sans,
-            "odibee-sans": Odibee Sans,
-            "ubuntu-condensed": Ubuntu Condensed,
-            "primary": $font-primary,
-        );
-        
-
-        $font-sizes: (
-            "xs": 18px,
-            "sm": 24px,
-            "md": 40px,
-            "lg": 50px,
-            "xl": 60px,
-            "xxl": 100px
-        );
-        
-        $colors: (
-            "girl": #8b1345,
-            "girl-light": #b42360
-        );
-
-        html, body {font-family: $font-primary; color: #eee;}
-        body {background:#0a0a0a;}
-
-        @each $font-family-name, $font-family in $font-families {
-            .font-#{$font-family-name} {
-                font-family: '#{$font-family}';
-            }
-
-            @each $font-size-name, $font-size in $font-sizes {
-                .font-#{$font-family-name}-#{$font-size-name} {
-                    font-family: '#{$font-family}';
-                    font-size: $font-size;
-                    line-height: calc(#{$font-size} + 5px);
-                }
-                
-                .font-#{$font-size-name} {
-                    font-size: $font-size;
-                    line-height: calc(#{$font-size} + 5px);
-                }
-            }
-        }
-
-        @each $color-name, $color in $colors {
-            .text-#{$color-name} {
-                color: $color;
-            }
-
-            .bg-#{$color-name} {
-                background: $color;
-            }
-            
-            .shadow-#{$color-name} {
-                box-shadow: 0 0 60px 60px $color;
-            }
-            
-            .glow-#{$color-name} {
-                box-shadow: 0 0 10px 5px $color;
-
-                &:hover {
-                    box-shadow: 0 0 30px 15px $color;
-                }
-            }
-        }
-
-        .btn-big {
-            color: #dddddd;
-            padding: 30px 50px;
-            border-radius: 80px;
-            font-size: 35px;
-            font-family: $font-primary;
-            line-height: 1.2;
-            border: none;
-            
-            &:hover {
-                background: #af1656;
-                color: #ffffff;
-            }
-        }
-
-    `;
-    Sass.compile(style, (resp) => {
-        document.querySelector('#style').innerHTML += `\n${resp.text}`;
-        console.log(document.querySelector('#style').innerHTML);
-    });
+    (() => {
+        const style = document.querySelector('#style');
+        Sass.setWorkerUrl('./assets/sass.worker.js');
+        (new Sass()).compile(style.innerHTML, (resp) => {
+            style.innerHTML = resp.text;
+            style.type = 'text/css';
+            console.log(resp.text);
+        });
+    })();
     </script>
 </head>
-<body>
-
+<body style="display:none;">
     <section class="container">
         <a href="" class="d-block text-center">
-            <img src="./assets/header.jpg" alt="" width="100%">
+            <img src="./assets/header.jpg" alt="" width="100%" class="d-none d-lg-block">
+            <img src="./assets/header.jpg" alt="" class="d-lg-none" style="width:250%; margin: 0 0 0 -75%;">
         </a>
 
         <h2 class="font-primary-md mx-auto text-center" style="max-width:800px">
@@ -198,34 +214,31 @@
     <section class="container py-5">
         <h2 class="font-primary-md text-center">Veja alguns resultados de alunas do Geração Girl Boss</h2>
         <div class="py-3"></div>
-        <div class="d-flex align-items-center">
-            <i class="mdi mdi-chevron-left-box font-md"></i>
-            <div class="flex-grow-1" style="overflow:auto">
-                <div class="d-flex flex-nowrap">
-                    <img src="./assets/00648f62-ad6d-40c3-9cfa-a22f668bb32e.jpg" alt="" width="100px">
-                    <img src="./assets/185750db-f742-42a4-a7ed-c51a54d613aa.jpg" alt="" width="100px">
-                    <img src="./assets/a7661f7e-259d-4afa-a817-46b4df319973.jpg" alt="" width="100px">
-                    <img src="./assets/ab5f0570-9882-47b7-9a87-46e503485ea0.jpg" alt="" width="100px">
-                    <img src="./assets/aefe8dd6-a2c8-460c-9790-d7a8c6dc88a7.jpg" alt="" width="100px">
-                    <img src="./assets/c6c07ef6-340a-46ce-a460-fbb6d5a08060.jpg" alt="" width="100px">
-                </div>
-            </div>
-            <i class="mdi mdi-chevron-right-box font-md"></i>
+        <div class="d-flex flex-wrap gboss-alunas-images justify-content-center">
+            <img src="./assets/00648f62-ad6d-40c3-9cfa-a22f668bb32e.jpg" alt="">
+            <img src="./assets/185750db-f742-42a4-a7ed-c51a54d613aa.jpg" alt="">
+            <img src="./assets/a7661f7e-259d-4afa-a817-46b4df319973.jpg" alt="">
+            <img src="./assets/ab5f0570-9882-47b7-9a87-46e503485ea0.jpg" alt="">
+            <img src="./assets/aefe8dd6-a2c8-460c-9790-d7a8c6dc88a7.jpg" alt="">
+            <img src="./assets/c6c07ef6-340a-46ce-a460-fbb6d5a08060.jpg" alt="">
         </div>
     </section>
 
     <div class="py-5"></div>
 
-    <section class="container py-5">
-        <h2 class="font-primary-md">
+    <section class="container border border-girl p-5" style="max-width: 700px;">
+        <h2 class="font-primary-md text-center">
             Como funciona o treinamento?
         </h2>
-        <ul class="font-sm">
-            <li>Explicação de como todo o mercado digital</li>
-            <li>Diversos estratégias a serem aplicadas para realizar vendas nas primeiras 72hs</li>
-            <li>Como utilizar suas redes sociais para começar a vender na internet</li>
+        <div class="py-2"></div>
+
+        <ul class="font-sm m-0">
+            <li class="my-3">Explicação de como todo o mercado digital</li>
+            <li class="my-3">Diversos estratégias a serem aplicadas para realizar vendas nas primeiras 72hs</li>
+            <li class="my-3">Como utilizar suas redes sociais para começar a vender na internet</li>
         </ul>
-        <div class="py-5"></div>
+        
+        <div class="py-3"></div>
         <div class="text-center">
             <a href="https://sun.eduzz.com/1026334?a=33123432" target="_blank" class="btn btn-big bg-girl glow-girl">
                 SIM! EU QUERO TER <br class="d-none d-lg-block">INDEPENDÊNCIA FINANCEIRA
@@ -233,6 +246,7 @@
         </div>
     </section>
 
+    <div class="py-5"></div>
     <div class="py-5"></div>
 
     <div class="bg-girl shadow-girl">
