@@ -9,28 +9,25 @@
     <style type="text/scss" id="style" lang="sass">
     @import url('https://unpkg.com/bootstrap@5.1.3/dist/css/bootstrap.min.css');
     @import url('https://cdn.jsdelivr.net/npm/@mdi/font@6.6.96/css/materialdesignicons.min.css');
-    @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Archivo+Black&family=Bungee&family=Cabin:wght@500&family=Fjalla+One&family=Fugaz+One&family=Kanit:wght@500&family=Merriweather+Sans:wght@500&family=Odibee+Sans&family=Ubuntu+Condensed&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@500&family=Fugaz+One&family=Prompt:wght@500&display=swap');
 
-    $font-primary: Cabin;
+    $font-primary: Prompt;
+    $font-secondary: Fugaz One;
 
     $font-families: (
         "abril-fatface": Abril Fatface,
         "archivo-black": Archivo Black,
-        "bungee": Bungee,
         "cabin": Cabin,
-        "fjalla-one": Fjalla One,
         "fugaz-one": Fugaz One,
-        "kanit": Kanit,
-        "merriweather-sans": Merriweather Sans,
-        "odibee-sans": Odibee Sans,
-        "ubuntu-condensed": Ubuntu Condensed,
+        "prompt": Prompt,
         "primary": $font-primary,
+        "secondary": $font-secondary
     );
     
 
     $font-sizes: (
         "xs": 18px,
-        "sm": 24px,
+        "sm": 30px,
         "md": 40px,
         "lg": 50px,
         "xl": 60px,
@@ -38,12 +35,23 @@
     );
     
     $colors: (
-        "girl": #8b1345,
-        "girl-light": #b42360
+        "gboss": #8b1345,
+        "gboss-light": #b42360
     );
 
-    html, body {font-family: $font-primary; color: #eee;}
-    body {background:#0a0a0a; display: block !important;}
+    html {width: 100%;}
+    body {font-family: $font-primary; color: #eee; background: #0a0a0a;}
+    h1, h2, h3, h4, h5, h6 {font-family: $font-secondary;}
+    #loader {display: none;}
+
+    .shadow-elev {
+        box-shadow: 20px 20px 0 5px #00000044;
+        transition: all 300ms ease;
+
+        &:hover {
+            box-shadow: 30px 30px 0 5px #00000044;
+        }
+    }
 
     @each $font-family-name, $font-family in $font-families {
         .font-#{$font-family-name} {
@@ -66,7 +74,7 @@
 
     @each $color-name, $color in $colors {
         .text-#{$color-name} {
-            color: $color;
+            color: $color !important;
         }
 
         .bg-#{$color-name} {
@@ -82,7 +90,8 @@
         }
         
         .glow-#{$color-name} {
-            box-shadow: 0 0 10px 5px $color;
+            box-shadow: 0 0 8px 2px $color;
+            transition: all 500ms ease;
 
             &:hover {
                 box-shadow: 0 0 30px 15px $color;
@@ -95,7 +104,7 @@
         padding: 30px 50px;
         border-radius: 80px;
         font-size: 35px;
-        font-family: $font-primary;
+        font-family: $font-secondary;
         line-height: 1.2;
         border: none;
         
@@ -122,19 +131,20 @@
         (new Sass()).compile(style.innerHTML, (resp) => {
             style.innerHTML = resp.text;
             style.type = 'text/css';
-            console.log(resp.text);
         });
     })();
     </script>
 </head>
-<body style="display:none;">
+<body>
+    <div id="loader" style="position:fixed; top:0; left:0; width:100%; height:100%; background:#fff; z-index:99;"></div>
+
     <section class="container">
         <a href="" class="d-block text-center">
             <img src="./assets/header.jpg" alt="" width="100%" class="d-none d-lg-block">
             <img src="./assets/header.jpg" alt="" class="d-lg-none" style="width:250%; margin: 0 0 0 -75%;">
         </a>
 
-        <h2 class="font-primary-md mx-auto text-center" style="max-width:800px">
+        <h2 class="font-secondary-md mx-auto text-center" style="max-width:800px">
             Comece a ser a sua própria chefe e aprenda como, muito em breve, você pode ser a #donadaporr*toda!
         </h2>
 
@@ -150,9 +160,7 @@
         <div class="py-5"></div>
 
         <div class="text-center">
-            <a href="https://sun.eduzz.com/1026334?a=33123432" target="_blank" class="btn btn-big bg-girl glow-girl">
-                SIM! EU QUERO TER <br class="d-none d-lg-block">INDEPENDÊNCIA FINANCEIRA
-            </a>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/JQPo95ERHjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </section>
 
@@ -161,9 +169,9 @@
     <section class="container">
         <div class="row mx-auto" style="max-width: 1100px;">
             <div class="col-12 col-lg-6 pb-5 text-center">
-                <div class="d-inline-flex align-items-center text-girl" style="height: 150px;">
+                <div class="d-inline-flex align-items-center text-gboss" style="height: 150px;">
                     <span class="font-xl mdi mdi-infinity"></span>
-                    <div class="flex-grow-1 ps-3 font-primary-lg text-center" style="line-height:1;">
+                    <div class="flex-grow-1 ps-3 font-secondary-lg text-center" style="line-height:1;">
                         ACESSO <br>VITALÍCIO
                     </div>
                 </div>
@@ -172,9 +180,9 @@
                 </div>
             </div>
             <div class="col-12 col-lg-6 pb-5 text-center">
-                <div class="d-inline-flex align-items-center text-girl" style="height: 150px;">
+                <div class="d-inline-flex align-items-center text-gboss" style="height: 150px;">
                     <span class="font-xl mdi mdi-certificate"></span>
-                    <div class="flex-grow-1 ps-3 font-primary-lg text-center" style="line-height:1;">
+                    <div class="flex-grow-1 ps-3 font-secondary-lg text-center" style="line-height:1;">
                         +30 VIDEOAULAS <br>OTIMIZADAS
                     </div>
                 </div>
@@ -187,13 +195,13 @@
 
     <div class="py-5"></div>
     
-    <div class="bg-girl shadow-girl">
+    <div class="bg-gboss shadow-gboss">
         <div class="py-5"></div>
         <section class="container">
             <div class="row align-items-center">
                 <div class="col-12 col-lg-7 pb-5 pb-lg-0 px-5 text-center">
                     <div>
-                        <h2 class="font-primary-lg">Daye Fidelis</h2>
+                        <h2 class="font-secondary-lg">Daye Fidelis</h2>
                         <div class="font-primary-sm">
                             Produtora e empreendedora do Geração Girl Boss, Daye é referência no
                             mercado digital, pois a cerca de 4 anos vem impulsionando milhares
@@ -202,7 +210,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-lg-5">
-                    <img src="./assets/daye-fidelis.jpg" alt="" width="100%" style="border-radius:20px; box-shadow: 20px 20px 0 5px #00000044;">
+                    <img src="./assets/daye-fidelis.jpg" alt="" width="100%" style="border-radius:20px;" class="shadow-elev">
                 </div>
             </div>
         </section>
@@ -212,23 +220,22 @@
     <div class="py-5"></div>
 
     <section class="container py-5">
-        <h2 class="font-primary-md text-center">Veja alguns resultados de alunas do Geração Girl Boss</h2>
+        <h2 class="font-secondary-md text-center">Veja alguns resultados de alunas do Geração Girl Boss</h2>
         <div class="py-3"></div>
         <div class="d-flex flex-wrap gboss-alunas-images justify-content-center">
             <img src="./assets/00648f62-ad6d-40c3-9cfa-a22f668bb32e.jpg" alt="">
             <img src="./assets/185750db-f742-42a4-a7ed-c51a54d613aa.jpg" alt="">
             <img src="./assets/a7661f7e-259d-4afa-a817-46b4df319973.jpg" alt="">
             <img src="./assets/ab5f0570-9882-47b7-9a87-46e503485ea0.jpg" alt="">
-            <img src="./assets/aefe8dd6-a2c8-460c-9790-d7a8c6dc88a7.jpg" alt="">
             <img src="./assets/c6c07ef6-340a-46ce-a460-fbb6d5a08060.jpg" alt="">
         </div>
     </section>
 
     <div class="py-5"></div>
 
-    <section class="container border border-girl p-5" style="max-width: 700px;">
-        <h2 class="font-primary-md text-center">
-            Como funciona o treinamento?
+    <section class="container border border-gboss p-5" style="max-width: 700px;">
+        <h2 class="font-secondary-md text-center">
+            COMO FUNCIONA O TREINAMENTO?
         </h2>
         <div class="py-2"></div>
 
@@ -240,7 +247,7 @@
         
         <div class="py-3"></div>
         <div class="text-center">
-            <a href="https://sun.eduzz.com/1026334?a=33123432" target="_blank" class="btn btn-big bg-girl glow-girl">
+            <a href="https://sun.eduzz.com/1026334?a=33123432" target="_blank" class="btn btn-big bg-gboss glow-gboss">
                 SIM! EU QUERO TER <br class="d-none d-lg-block">INDEPENDÊNCIA FINANCEIRA
             </a>
         </div>
@@ -249,11 +256,12 @@
     <div class="py-5"></div>
     <div class="py-5"></div>
 
-    <div class="bg-girl shadow-girl">
+    <div class="bg-gboss shadow-gboss">
         <div class="py-5"></div>
+
         <section class="container">
-            <h2 class="font-primary-lg text-center">
-                TENHA ACESSO VITALÍCIO AO <br>TREINAMENT POR APENAS:
+            <h2 class="font-secondary-lg text-center">
+                TENHA ACESSO VITALÍCIO AO <br>TREINAMENTO POR APENAS:
             </h2>
 
             <div class="py-3"></div>
@@ -267,31 +275,44 @@
                                 <div>12x de</div>
                                 <div class="font-xl">R$</div>
                             </div>
-                            <div class="font-primary" style="font-size: 200px; letter-spacing:-20px; line-height:200px;">29</div>
-                            <div class="font-primary font-md ps-4">,70</div>
+                            <div class="font-secondary" style="font-size: 200px; letter-spacing:-20px; line-height:200px;">29</div>
+                            <div class="font-secondary font-md ps-4">,70</div>
                         </div>
                         <div class="font-md">ou 297,00 a vista</div>
                     </div>
                     <div class="col-12 col-lg-7">
-                        <a href="https://sun.eduzz.com/1026334?a=33123432" target="_blank" class="btn btn-big bg-girl-light w-100">
+                        <a href="https://sun.eduzz.com/1026334?a=33123432" target="_blank" class="btn btn-big bg-gboss-light w-100 shadow-elev">
                             SIM! EU QUERO TER INDEPENDÊNCIA FINANCEIRA
                         </a>
                     </div>
                 </div>
             </div>
+
+            <div class="py-5"></div>
+
+            <div class="row g-0 align-items-center">
+                <div class="col-12 col-lg-6">
+                    <div class="bg-gboss-light d-flex align-items-center justify-content-center mx-auto shadow-elev" style="width:400px; height:400px; border-radius:50%;">
+                        <div class="text-center">
+                            <div class="font-secondary-md">GARANTIA</div>
+                            <div class="font-secondary-xxl">7 DIAS</div>
+                            <div class="font-secondary-sm">ou seu dinheiro <br>de volta</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="font-secondary-md">FIQUE TRANQUILA!</div>
+                    <div class="font-primary-sm">Sua satisfação garantida ou seu dinheiro de volta!</div>
+                    <div class="py-3"></div>
+                    <div class="font-primary-sm py-2">- O Geração Girl Boss tem garantia incondicional de 7 dias</div>
+                    <div class="font-primary-sm py-2">- Se por algum motivo você não ficar satisfeita com o conteúdo, basta entrar em contato com nossa equipe de suporte (suporte@dayefidelis.com)</div>
+                </div>
+            </div>
         </section>
+
         <div class="py-5"></div>
+
+        <a href="https://labscript.dev" class="d-block text-center text-gboss-light py-2" target="_blank">Desenvolvido por Labscript.dev &copy; 2022</a>
     </div>
-    
-    <!--
-        
-        de 499,00 por 12x de 29,70 ou 297,00 a vista
-        QUERO COMPRAR AGORA MESMO
-        GARANTIA 7 DIAS SEU DINHEIRO DE VOLTA
-        FIQUE TRANQUILA!
-        Sua satisfação garantida ou seu dinheiro de volta!
-        - O Geração Girl Boss tem garantia incondicional de 7 dias
-        - Se por algum motivo você não ficar satisfeita com o conteúdo, basta entrar em contato com nossa equipe de suporte (alunos@dayefidelis.com)
-    -->
 </body>
 </html>
